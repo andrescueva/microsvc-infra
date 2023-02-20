@@ -58,3 +58,9 @@ variable "ecs_cluster_name" {
   type        = string
   description = "ecs name"
 }
+
+
+variable "task_cpu_percentage_threshold" {
+  type = number
+  description = "task_cpu_percentage_threshold"
+}

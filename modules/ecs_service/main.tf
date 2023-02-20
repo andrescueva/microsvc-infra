@@ -70,7 +70,7 @@ resource "aws_appautoscaling_policy" "my_scaling_policy" {
     }
     scale_in_cooldown  = 300
     scale_out_cooldown = 300
-    target_value       = 80.0
+    target_value       = var.task_cpu_percentage_threshold
   }
 }
 
