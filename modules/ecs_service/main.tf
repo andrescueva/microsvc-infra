@@ -1,5 +1,5 @@
 resource "aws_ecs_task_definition" "task" {
-  family                   = "microsvc"
+  family                   = var.container_name
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   memory                   = var.task_memory
@@ -7,7 +7,7 @@ resource "aws_ecs_task_definition" "task" {
   container_definitions    = <<DEFINITION
   [
     {
-      "name": "microsvc",
+      "name": "${var.container_name}",
       "image": "image",
       "portMappings": [
         {
@@ -25,7 +25,7 @@ resource "aws_ecs_task_definition" "task" {
 }
 
 resource "aws_ecs_service" "svc" {
-  name            = "microsvc"
+  name            = var.service_name
   cluster         = var.ecs_cluster_id
   task_definition = aws_ecs_task_definition.task.arn
   desired_count   = var.min_capacity
@@ -38,7 +38,7 @@ resource "aws_ecs_service" "svc" {
 
   load_balancer {
     target_group_arn = var.lb_target_group_arn
-    container_name   = "microsvc"
+    container_name   = var.container_name
     container_port   = var.container_port
   }
 

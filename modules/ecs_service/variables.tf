@@ -61,6 +61,11 @@ variable "ecs_cluster_name" {
 
 
 variable "task_cpu_percentage_threshold" {
-  type = number
+  type        = number
   description = "task_cpu_percentage_threshold"
 }
+
+
+variable "container_name" {}
+
+variable "service_name" {}
