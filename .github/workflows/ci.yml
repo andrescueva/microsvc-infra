@@ -26,7 +26,7 @@ jobs:
         uses: hashicorp/setup-terraform@v2
 
       - name: Initialize Terraform
-        run: terraformc -chdir=prod init
+        run: terraform -chdir=prod init
 
       - name: Validate Terraform
         run: terraform -chdir=prod validate
