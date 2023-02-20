@@ -46,7 +46,7 @@ module "sg_vpc_internal" {
 module "lb" {
   source          = "../modules/application_lb"
   vpc_id          = module.network.vpc_id
-  container_port  = var.container_port
+  container_port  = var.task_container_port
   security_groups = [module.sg_lb.id]
   subnets         = [module.network.public_subnet1_id, module.network.public_subnet2_id]
 
@@ -61,7 +61,9 @@ module "ecs" {
 
 module "ecs_service" {
   source          = "../modules/ecs_service"
-  container_port  = var.container_port
+  service_name    = var.ecr_repo_name
+  container_name  = var.ecr_repo_name
+  container_port  = var.task_container_port
   security_groups = [module.sg_vpc_internal.id]
   #subnets = [module.network.public_subnet1_id, module.network.public_subnet2_id]
   subnets                       = [module.network.private_subnet1_id, module.network.private_subnet2_id]
@@ -79,7 +81,7 @@ module "ecs_service" {
 
 module "ecr" {
   source = "../modules/ecr"
-  name   = "microsvc"
+  name   = var.ecr_repo_name
 }
 
 
