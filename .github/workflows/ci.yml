@@ -7,6 +7,8 @@ on:
       - feature/**
     paths-ignore:
       - '.github/workflows/*'
+      - 'images/**'
+      - 'README*'
     tags:
       - v*
   workflow_dispatch:
