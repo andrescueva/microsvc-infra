@@ -1,7 +1,7 @@
 # Terraform code for build AWS infra for microsvc app
 
-modules: TF modules for defining the AWS services used in infra
-prod: Instances of modules for building prod environment
+- modules: TF modules for defining the AWS services used in infra
+- prod: Instances of modules for building prod environment
 
 Below the architecture:
 
@@ -16,8 +16,8 @@ Below the architecture:
 
 ## Repository secrets
 
-- AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
-- AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+- AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID of the account with permissions to create services in the target env
+- AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY  of the account with permissions to create services in the target env
 
 ## Repository variables
 - AWS_REGION: region of the environment
