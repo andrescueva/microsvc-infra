@@ -11,8 +11,8 @@ Below the architecture:
 
 
 ## Pipelines
-- CI - microsvc/.github/workflows/ci.yml: runs terraform init, terraform validate, terraform plan.
-- CD - microsvc/.github/workflows/ci.yml: manual execution of terraform apply.
+- CI - microsvc-infra/.github/workflows/ci.yml: runs terraform init, terraform validate, terraform plan.
+- CD - microsvc-infra/.github/workflows/ci.yml: manual execution of terraform apply.
 
 ## Repository secrets
 
